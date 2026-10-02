@@ -176,13 +176,13 @@ function Home() {
       </header>
 
       <div className="mx-auto grid max-w-[1480px] gap-6 px-4 pb-16 pt-5 sm:px-7 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8 lg:pt-8">
-        <aside className={`${mobileTopics ? 'block mobile-topics-enter' : 'hidden'} md:block lg:sticky lg:top-[92px] lg:max-h-[calc(100dvh-112px)] lg:self-start`}>
-          <div className="rounded-[22px] border border-border bg-card p-4 shadow-sm">
+        <aside className={`${mobileTopics ? 'block mobile-topics-enter' : 'hidden'} md:flex md:flex-col md:gap-4 lg:sticky lg:top-[92px] lg:max-h-[calc(100dvh-124px)] lg:self-start`}>
+          <div className="rounded-[22px] border border-border bg-card p-4 shadow-sm lg:flex lg:min-h-0 lg:flex-col">
             <div className="mb-3 flex items-center justify-between px-2">
               <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-muted-foreground">Your roadmap</p>
               <span className="font-mono text-[10px] text-muted-foreground">12 TOPICS</span>
             </div>
-            <nav aria-label="Roadmap topics" className="scrollbar-thin max-h-[min(58vh,610px)] space-y-1 overflow-y-auto">
+            <nav aria-label="Roadmap topics" className="scrollbar-thin max-h-[min(58vh,610px)] space-y-1 overflow-y-auto lg:min-h-0 lg:flex-1 lg:max-h-none">
               <button onClick={() => { setActiveTopic(null); setMobileTopics(false); }} className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition ${activeTopic === null ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}`} aria-current={activeTopic === null ? 'page' : undefined} data-testid="nav-topic-all">
                 <ListChecks size={16} /><span className="flex-1 text-[13px] font-extrabold">All problems</span><span className="font-mono text-[10px]">{solvedCount}/101</span>
               </button>
@@ -203,10 +203,10 @@ function Home() {
               <p className="mt-2 font-mono text-[10px] text-muted-foreground">{solvedCount} of 101 solved</p>
             </div>
           </div>
-          <div className="mt-4 hidden rounded-[22px] bg-[#22332e] p-5 text-[#f1f3e9] lg:block">
-            <div className="mb-4 flex items-center justify-between"><Flame size={18} className="text-[#facb82]" /><span className="font-mono text-[10px] tracking-widest text-white/50">THE PRACTICE LOOP</span></div>
-            <p className="font-display text-lg font-bold leading-tight">Learn the pattern.<br />Then make it yours.</p>
-            <p className="mt-3 text-[11px] leading-relaxed text-white/65">Learn pattern <ArrowRight className="mx-1 inline" size={12} /> solve easy <ArrowRight className="mx-1 inline" size={12} /> solve medium <ArrowRight className="mx-1 inline" size={12} /> review <ArrowRight className="mx-1 inline" size={12} /> repeat</p>
+          <div className="mt-4 shrink-0 rounded-[22px] bg-[#22332e] p-4 text-[#f1f3e9] sm:p-5 md:mt-0">
+            <div className="mb-3 flex items-center justify-between gap-3 sm:mb-4"><Flame size={18} className="shrink-0 text-[#facb82]" /><span className="font-mono text-[10px] tracking-widest text-white/50">THE PRACTICE LOOP</span></div>
+            <p className="font-display text-base font-bold leading-tight sm:text-lg">Learn the pattern.<br />Then make it yours.</p>
+            <p className="mt-3 flex flex-wrap items-center gap-x-1 gap-y-1.5 text-[11px] leading-relaxed text-white/65">{['Learn pattern', 'solve easy', 'solve medium', 'review', 'repeat'].map((step, i) => <span key={step} className="flex items-center gap-1 whitespace-nowrap">{i > 0 && <ArrowRight size={12} className="shrink-0" />}{step}</span>)}</p>
           </div>
         </aside>
 
