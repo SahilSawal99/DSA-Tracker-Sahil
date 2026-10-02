@@ -81,6 +81,7 @@ function Home() {
   const [statusFilter, setStatusFilter] = useState<'all' | Status>('all');
   const [notesOpen, setNotesOpen] = useState<number | null>(null);
   const [showGuide, setShowGuide] = useState(false);
+  const [showResources, setShowResources] = useState(false);
   const [mobileTopics, setMobileTopics] = useState(false);
 
   useEffect(() => {
@@ -149,6 +150,9 @@ function Home() {
             <span className="hidden border-l border-border pl-3 text-[11px] font-semibold tracking-wide text-muted-foreground sm:block">101 DSA ROADMAP</span>
           </a>
           <div className="flex items-center gap-2">
+            <button onClick={() => setShowResources((open) => !open)} className={`flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold transition ${showResources ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}`} aria-label="Toggle DSA resources" aria-expanded={showResources} data-testid="button-resources">
+              <ExternalLink size={16} /><span className="hidden sm:inline">Resources</span>
+            </button>
             <button onClick={() => setShowGuide((open) => !open)} className={`flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold transition ${showGuide ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted hover:text-foreground'}`} aria-label="Toggle solve guide" aria-expanded={showGuide} data-testid="button-study-guide">
               <BookOpen size={16} /><span className="hidden sm:inline">Solve guide</span>
             </button>
@@ -222,6 +226,23 @@ function Home() {
               </div>
             </div>
           </section>
+
+          {showResources && <section className="page-enter mt-5 rounded-[22px] border border-primary/20 bg-primary/5 p-5 sm:p-6" aria-label="Additional DSA resources">
+            <div className="mb-4 flex items-start justify-between gap-3">
+              <div><p className="font-mono text-[10px] font-bold tracking-[.15em] text-primary">KEEP LEARNING</p><h2 className="mt-1 font-display text-xl font-bold tracking-tight">Your DSA resources</h2></div>
+              <button onClick={() => setShowResources(false)} aria-label="Close DSA resources" className="rounded-lg p-1.5 text-muted-foreground hover:bg-muted"><X size={17} /></button>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <a href="https://tinyurl.com/4hkd75jd" target="_blank" rel="noreferrer" className="group flex min-w-0 items-start gap-3 rounded-xl border border-border bg-card p-4 transition hover:border-primary/40 hover:bg-primary/5" data-testid="link-guided-learning">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#e4f2e8] text-[#397662] dark:bg-[#294439] dark:text-[#a5ddbf]"><BookOpen size={17} /></span>
+                <span className="min-w-0 flex-1"><span className="flex items-center gap-2 text-sm font-extrabold text-foreground">Guided learning mode <ExternalLink size={13} className="shrink-0 text-muted-foreground transition group-hover:text-primary" /></span><span className="mt-1 block text-xs leading-relaxed text-muted-foreground">Open the guided DSA learning space and choose a problem to begin.</span></span>
+              </a>
+              <a href="https://replit.com/@SahilSawal/DSA-Roadmap-Tracker" target="_blank" rel="noreferrer" className="group flex min-w-0 items-start gap-3 rounded-xl border border-border bg-card p-4 transition hover:border-primary/40 hover:bg-primary/5" data-testid="link-replit-roadmap">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#fff0d8] text-[#a66509] dark:bg-[#49351c] dark:text-[#f2bf7b]"><Code2 size={17} /></span>
+                <span className="min-w-0 flex-1"><span className="flex items-center gap-2 text-sm font-extrabold text-foreground">DSA Roadmap Tracker on Replit <ExternalLink size={13} className="shrink-0 text-muted-foreground transition group-hover:text-primary" /></span><span className="mt-1 block text-xs leading-relaxed text-muted-foreground">Open the linked roadmap project on Replit.</span></span>
+              </a>
+            </div>
+          </section>}
 
           {showGuide && <section className="page-enter mt-5 rounded-[22px] border border-primary/20 bg-primary/5 p-5 sm:p-6" aria-label="How to solve each problem">
             <div className="mb-4 flex items-start justify-between gap-3"><div><p className="font-mono text-[10px] font-bold tracking-[.15em] text-primary">THE FIVE-STEP METHOD</p><h2 className="mt-1 font-display text-xl font-bold tracking-tight">How to solve each problem</h2></div><button onClick={() => setShowGuide(false)} aria-label="Close solve guide" className="rounded-lg p-1.5 text-muted-foreground hover:bg-muted"><X size={17} /></button></div>
