@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -50,6 +50,7 @@
   --ring: 160 54% 35%;
   --app-font-sans: 'Manrope', sans-serif;
   --app-font-display: 'Space Grotesk', sans-serif;
+  --app-font-handwriting: 'Caveat', cursive;
   --app-font-mono: 'DM Mono', monospace;
   --radius: 1rem;
 }
@@ -88,7 +89,17 @@
 .app-shell { min-height: 100dvh; background: hsl(var(--background)); }
 .grain::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 30; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E"); }
 .font-display { font-family: var(--app-font-display); }
+.font-handwriting { font-family: var(--app-font-handwriting); }
 .font-mono { font-family: var(--app-font-mono); }
+.resource-panel { scroll-margin-top: 84px; }
+.pattern-chip { color: #2f7559; background: #e4f3e9; border-color: #c7e5d0; font-size: 11px; line-height: 1.25; }
+.pattern-chip:nth-child(4n + 2) { color: #8e5d17; background: #fff1d7; border-color: #f1dcad; }
+.pattern-chip:nth-child(4n + 3) { color: #3d638c; background: #e5effb; border-color: #cadcf2; }
+.pattern-chip:nth-child(4n + 4) { color: #87546a; background: #f7e8ee; border-color: #ebcedb; }
+.dark .pattern-chip { color: #b9e4ca; background: #254234; border-color: #3b644f; }
+.dark .pattern-chip:nth-child(4n + 2) { color: #f1d19a; background: #45371f; border-color: #6c5126; }
+.dark .pattern-chip:nth-child(4n + 3) { color: #c7dcf6; background: #263a51; border-color: #3b587b; }
+.dark .pattern-chip:nth-child(4n + 4) { color: #efc8da; background: #442c39; border-color: #684356; }
 .page-enter { animation: rise-in .45s cubic-bezier(.2,.8,.2,1) both; }
 .stagger-1 { animation-delay: .06s; }
 .stagger-2 { animation-delay: .12s; }

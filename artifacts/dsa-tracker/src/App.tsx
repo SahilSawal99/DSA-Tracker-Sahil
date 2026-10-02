@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -82,6 +82,7 @@ function Home() {
   const [notesOpen, setNotesOpen] = useState<number | null>(null);
   const [showGuide, setShowGuide] = useState(false);
   const [showResources, setShowResources] = useState(false);
+  const resourcesRef = useRef<HTMLElement | null>(null);
   const [mobileTopics, setMobileTopics] = useState(false);
 
   useEffect(() => {
@@ -92,8 +93,16 @@ function Home() {
     localStorage.setItem(THEME_KEY, theme);
   }, [theme]);
   useEffect(() => {
+    if (!showResources) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    requestAnimationFrame(() => resourcesRef.current?.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+      block: 'start',
+    }));
+  }, [showResources]);
+  useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') { setNotesOpen(null); setMobileTopics(false); }
+      if (event.key === 'Escape') { setNotesOpen(null); setMobileTopics(false); setShowResources(false); setShowGuide(false); }
       if (event.key === '/' && !(event.target instanceof HTMLInputElement) && !(event.target instanceof HTMLTextAreaElement)) {
         event.preventDefault(); document.getElementById('problem-search')?.focus();
       }
@@ -146,7 +155,7 @@ function Home() {
         <div className="mx-auto flex h-[68px] max-w-[1480px] items-center justify-between px-4 sm:px-7">
           <a href="#" className="flex items-center gap-3 text-foreground no-underline" aria-label="Studyloom home">
             <span className="grid h-9 w-9 place-items-center rounded-xl bg-foreground text-background"><Code2 size={19} strokeWidth={2.6} /></span>
-            <span className="font-display text-[18px] font-bold tracking-[-.04em]">studyloom<span className="text-primary">.</span></span>
+            <span className="font-handwriting text-[27px] font-semibold leading-none tracking-[-.02em]">studyloom<span className="text-primary">.</span></span>
             <span className="hidden border-l border-border pl-3 text-[11px] font-semibold tracking-wide text-muted-foreground sm:block">101 DSA ROADMAP</span>
           </a>
           <div className="flex items-center gap-2">
@@ -208,7 +217,7 @@ function Home() {
             <div className="relative z-[1] grid gap-8 md:grid-cols-[minmax(0,1fr)_220px] md:items-center">
               <div>
                 <div className="mb-4 flex items-center gap-2"><span className="rounded-full bg-white/65 px-2.5 py-1 font-mono text-[10px] font-bold tracking-wide text-[#397662] dark:bg-white/10 dark:text-[#a5ddbf]">YOUR INTERVIEW PRACTICE, IN ORDER</span><span className="h-px w-8 bg-[#82bba2]" /></div>
-                <h1 className="font-display max-w-[650px] text-[38px] font-bold leading-[1.04] tracking-[-.055em] sm:text-[54px]">One problem at a time.<br /><span className="text-[#3d8a6d] dark:text-[#8ad4ae]">A hundred closer.</span></h1>
+                <h1 className="font-handwriting max-w-[650px] text-[42px] font-semibold leading-[.98] tracking-[-.025em] sm:text-[58px]">One problem at a time.<br /><span className="text-[#3d8a6d] dark:text-[#8ad4ae]">A hundred closer.</span></h1>
                 <p className="mt-4 max-w-[510px] text-sm leading-6 text-[#4d6a60] dark:text-[#c1d6c9]">A structured path through 101 essential problems. Build pattern recognition, keep your notes, and let the progress add up.</p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   <span className="flex items-center gap-2 rounded-full bg-white/75 px-3 py-2 text-xs font-extrabold dark:bg-white/10"><span className="h-2 w-2 rounded-full bg-[#39966d]" />{solvedCount} solved</span>
@@ -227,7 +236,7 @@ function Home() {
             </div>
           </section>
 
-          {showResources && <section className="page-enter mt-5 rounded-[22px] border border-primary/20 bg-primary/5 p-5 sm:p-6" aria-label="Additional DSA resources">
+          {showResources && <section ref={resourcesRef} className="page-enter resource-panel mt-5 rounded-[22px] border border-primary/20 bg-primary/5 p-5 sm:p-6" aria-label="Additional DSA resources">
             <div className="mb-4 flex items-start justify-between gap-3">
               <div><p className="font-mono text-[10px] font-bold tracking-[.15em] text-primary">KEEP LEARNING</p><h2 className="mt-1 font-display text-xl font-bold tracking-tight">Your DSA resources</h2></div>
               <button onClick={() => setShowResources(false)} aria-label="Close DSA resources" className="rounded-lg p-1.5 text-muted-foreground hover:bg-muted"><X size={17} /></button>
@@ -307,12 +316,12 @@ function Home() {
                   <div className="border-b border-border/80 bg-muted/35 px-4 py-4 sm:px-5">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <div className="flex items-center gap-2"><span className="font-mono text-[10px] font-bold text-primary">{topic.symbol}</span><h3 className="font-display text-[17px] font-bold tracking-[-.025em]">{topic.name}</h3></div>
-                        <p className="mt-1.5 max-w-2xl text-[11px] leading-relaxed text-muted-foreground">{topic.focus}</p>
+                        <div className="flex items-center gap-2"><span className="font-mono text-[10px] font-bold text-primary">{topic.symbol}</span><h3 className="font-display text-[18px] font-bold tracking-[-.025em]">{topic.name}</h3></div>
+                        <p className="mt-1.5 max-w-2xl text-xs leading-relaxed text-muted-foreground">{topic.focus}</p>
                       </div>
                       <div className="shrink-0 text-right"><span className="font-mono text-[11px] font-bold">{progress.solved}<span className="text-muted-foreground">/{progress.total}</span></span><div className="mt-2 w-16 progress-track"><div className="progress-fill" style={{ width: `${progress.solved / progress.total * 100}%` }} /></div></div>
                     </div>
-                    <div className="mt-3 flex flex-wrap gap-1.5">{topic.patterns.map((pattern) => <span key={pattern} className="rounded-md border border-border/80 bg-card px-2 py-1 font-mono text-[9px] font-medium text-muted-foreground">{pattern}</span>)}</div>
+                    <div className="mt-3 flex flex-wrap gap-1.5">{topic.patterns.map((pattern) => <span key={pattern} className="pattern-chip rounded-md border px-2 py-1 font-mono font-medium">{pattern}</span>)}</div>
                   </div>
                   <div className="divide-y divide-border/70">
                     {problems.map((problem) => {
@@ -326,7 +335,7 @@ function Home() {
                             {status === 'solved' ? <Check size={13} strokeWidth={3} /> : status === 'in-progress' ? <ArrowRight size={12} /> : status === 'review' ? <NotebookPen size={11} /> : <Circle size={10} />}
                           </button>
                           <div className="min-w-0 flex-1">
-                            <p className={`truncate text-[12px] font-bold sm:text-[13px] ${status === 'solved' ? 'text-muted-foreground' : 'text-foreground'}`}>{problem.name}</p>
+                            <p className={`truncate text-[13px] font-bold sm:text-sm ${status === 'solved' ? 'text-muted-foreground' : 'text-foreground'}`}>{problem.name}</p>
                             {note.learned || note.revisit ? <p className="mt-0.5 truncate text-[10px] text-primary">{note.learned || note.revisit}</p> : null}
                           </div>
                           <span className={`status-pill hidden sm:inline-flex status-${status}`}>{STATUS_LABEL[status]}</span>
