@@ -113,8 +113,49 @@
 .dark .phase-blue { color: #c0dce5; background: #2d424a; }
 .dark .phase-plum { color: #e2c9d9; background: #463747; }
 .problem-row { transition: background-color .18s ease, transform .18s ease, border-color .18s ease; }
-.problem-row:hover { transform: translateX(3px); }
+.problem-row:hover { transform: translateX(3px); background-color: hsl(var(--primary) / .025); }
+.problem-row:focus-within { background-color: hsl(var(--primary) / .055); box-shadow: inset 2px 0 0 hsl(var(--primary) / .5); }
 .check-pop { animation: check-pop .35s ease-out; }
 @keyframes check-pop { 50% { transform: scale(1.16); } }
+
+button:not(:disabled), a[href] { -webkit-tap-highlight-color: transparent; }
+button:not(:disabled):active { transform: scale(.97); }
+a[href]:active { transform: scale(.99); }
+
+.hero-orbit { transform-origin: center; will-change: transform; }
+.hero-orbit-primary { animation: orbit-drift 8s ease-in-out infinite; }
+.hero-orbit-secondary { animation: orbit-drift-reverse 10s ease-in-out infinite; }
+@keyframes orbit-drift { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 50% { transform: translate3d(-8px, 10px, 0) rotate(3deg); } }
+@keyframes orbit-drift-reverse { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 50% { transform: translate3d(7px, -8px, 0) rotate(-4deg); } }
+
+.theme-switch-icon { animation: icon-pop .26s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes icon-pop { from { opacity: .35; transform: rotate(-35deg) scale(.75); } to { opacity: 1; transform: rotate(0) scale(1); } }
+
+.mobile-topics-enter { animation: sidebar-in .22s cubic-bezier(.2,.8,.2,1) both; transform-origin: top; }
+@keyframes sidebar-in { from { opacity: 0; transform: translateY(-7px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+.resource-card, .phase-mint, .phase-orange, .phase-blue, .phase-plum {
+  transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease, border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+.resource-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px hsl(160 24% 24% / .1); }
+.resource-card > span:first-child { transition: transform .2s cubic-bezier(.2,.8,.2,1); }
+.resource-card:hover > span:first-child { transform: rotate(-4deg) scale(1.06); }
+.phase-mint:hover, .phase-orange:hover, .phase-blue:hover, .phase-plum:hover { transform: translateY(-2px); box-shadow: 0 8px 20px hsl(220 20% 20% / .08); }
+
+button[data-testid^="button-status-"] { transition: transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s ease, background-color .18s ease; }
+button[data-testid^="button-status-"]:hover { transform: scale(1.12); box-shadow: 0 0 0 4px hsl(var(--primary) / .08); }
+button[data-testid^="button-status-"]:active { transform: scale(.9); }
+a[href^="https://leetcode.com/problems/"] svg { transition: transform .18s ease; }
+a[href^="https://leetcode.com/problems/"]:hover svg { transform: translate(1px, -1px); }
+
+.problem-row > div:nth-child(2) { animation: note-reveal .22s cubic-bezier(.2,.8,.2,1) both; transform-origin: top; }
+@keyframes note-reveal { from { opacity: 0; transform: translateY(-5px) scaleY(.98); } to { opacity: 1; transform: translateY(0) scaleY(1); } }
+
+.page-enter[aria-label="How to solve each problem"] > .grid > div { animation: rise-in .32s cubic-bezier(.2,.8,.2,1) both; }
+.page-enter[aria-label="How to solve each problem"] > .grid > div:nth-child(2) { animation-delay: 45ms; }
+.page-enter[aria-label="How to solve each problem"] > .grid > div:nth-child(3) { animation-delay: 90ms; }
+.page-enter[aria-label="How to solve each problem"] > .grid > div:nth-child(4) { animation-delay: 135ms; }
+.page-enter[aria-label="How to solve each problem"] > .grid > div:nth-child(5) { animation-delay: 180ms; }
+
 .scrollbar-thin { scrollbar-width: thin; scrollbar-color: hsl(var(--border)) transparent; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }

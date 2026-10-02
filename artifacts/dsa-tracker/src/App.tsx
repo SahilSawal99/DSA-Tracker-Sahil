@@ -157,7 +157,7 @@ function Home() {
               <BookOpen size={16} /><span className="hidden sm:inline">Solve guide</span>
             </button>
             <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-card text-foreground transition hover:bg-muted" aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`} data-testid="button-theme">
-              {theme === 'light' ? <Moon size={17} /> : <Sun size={17} />}
+              {theme === 'light' ? <Moon className="theme-switch-icon" size={17} /> : <Sun className="theme-switch-icon" size={17} />}
             </button>
             <button onClick={() => setMobileTopics((open) => !open)} className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-card md:hidden" aria-label="Toggle topics" aria-expanded={mobileTopics} data-testid="button-mobile-topics">
               {mobileTopics ? <X size={17} /> : <Menu size={17} />}
@@ -167,7 +167,7 @@ function Home() {
       </header>
 
       <div className="mx-auto grid max-w-[1480px] gap-6 px-4 pb-16 pt-5 sm:px-7 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8 lg:pt-8">
-        <aside className={`${mobileTopics ? 'block' : 'hidden'} md:block lg:sticky lg:top-[92px] lg:max-h-[calc(100dvh-112px)] lg:self-start`}>
+        <aside className={`${mobileTopics ? 'block mobile-topics-enter' : 'hidden'} md:block lg:sticky lg:top-[92px] lg:max-h-[calc(100dvh-112px)] lg:self-start`}>
           <div className="rounded-[22px] border border-border bg-card p-4 shadow-sm">
             <div className="mb-3 flex items-center justify-between px-2">
               <p className="text-[10px] font-extrabold uppercase tracking-[.16em] text-muted-foreground">Your roadmap</p>
@@ -203,8 +203,8 @@ function Home() {
 
         <main className="min-w-0">
           <section className="page-enter relative overflow-hidden rounded-[28px] bg-[#d9eee1] px-5 py-7 text-[#203b33] sm:px-8 sm:py-9 dark:bg-[#243d35] dark:text-[#eaf4ec]">
-            <div className="pointer-events-none absolute -right-14 -top-24 h-64 w-64 rounded-full border-[32px] border-[#b7dfca]/65 dark:border-[#315347]/70" />
-            <div className="pointer-events-none absolute -bottom-24 right-[20%] h-36 w-36 rounded-full border-[20px] border-[#f1b994]/50 dark:border-[#8d593f]/40" />
+            <div className="hero-orbit hero-orbit-primary pointer-events-none absolute -right-14 -top-24 h-64 w-64 rounded-full border-[32px] border-[#b7dfca]/65 dark:border-[#315347]/70" />
+            <div className="hero-orbit hero-orbit-secondary pointer-events-none absolute -bottom-24 right-[20%] h-36 w-36 rounded-full border-[20px] border-[#f1b994]/50 dark:border-[#8d593f]/40" />
             <div className="relative z-[1] grid gap-8 md:grid-cols-[minmax(0,1fr)_220px] md:items-center">
               <div>
                 <div className="mb-4 flex items-center gap-2"><span className="rounded-full bg-white/65 px-2.5 py-1 font-mono text-[10px] font-bold tracking-wide text-[#397662] dark:bg-white/10 dark:text-[#a5ddbf]">YOUR INTERVIEW PRACTICE, IN ORDER</span><span className="h-px w-8 bg-[#82bba2]" /></div>
@@ -233,11 +233,11 @@ function Home() {
               <button onClick={() => setShowResources(false)} aria-label="Close DSA resources" className="rounded-lg p-1.5 text-muted-foreground hover:bg-muted"><X size={17} /></button>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              <a href="https://tinyurl.com/4hkd75jd" target="_blank" rel="noreferrer" className="group flex min-w-0 items-start gap-3 rounded-xl border border-border bg-card p-4 transition hover:border-primary/40 hover:bg-primary/5" data-testid="link-guided-learning">
+              <a href="https://tinyurl.com/4hkd75jd" target="_blank" rel="noreferrer" className="resource-card group flex min-w-0 items-start gap-3 rounded-xl border border-border bg-card p-4 transition hover:border-primary/40 hover:bg-primary/5" data-testid="link-guided-learning">
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#e4f2e8] text-[#397662] dark:bg-[#294439] dark:text-[#a5ddbf]"><BookOpen size={17} /></span>
                 <span className="min-w-0 flex-1"><span className="flex items-center gap-2 text-sm font-extrabold text-foreground">Guided learning mode <ExternalLink size={13} className="shrink-0 text-muted-foreground transition group-hover:text-primary" /></span><span className="mt-1 block text-xs leading-relaxed text-muted-foreground">Open the guided DSA learning space and choose a problem to begin.</span></span>
               </a>
-              <a href="https://replit.com/@SahilSawal/DSA-Roadmap-Tracker" target="_blank" rel="noreferrer" className="group flex min-w-0 items-start gap-3 rounded-xl border border-border bg-card p-4 transition hover:border-primary/40 hover:bg-primary/5" data-testid="link-replit-roadmap">
+              <a href="https://replit.com/@SahilSawal/DSA-Roadmap-Tracker" target="_blank" rel="noreferrer" className="resource-card group flex min-w-0 items-start gap-3 rounded-xl border border-border bg-card p-4 transition hover:border-primary/40 hover:bg-primary/5" data-testid="link-replit-roadmap">
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#fff0d8] text-[#a66509] dark:bg-[#49351c] dark:text-[#f2bf7b]"><Code2 size={17} /></span>
                 <span className="min-w-0 flex-1"><span className="flex items-center gap-2 text-sm font-extrabold text-foreground">DSA Roadmap Tracker on Replit <ExternalLink size={13} className="shrink-0 text-muted-foreground transition group-hover:text-primary" /></span><span className="mt-1 block text-xs leading-relaxed text-muted-foreground">Open the linked roadmap project on Replit.</span></span>
               </a>
