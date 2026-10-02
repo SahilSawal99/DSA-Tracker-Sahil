@@ -1,0 +1,293 @@
+DSA Interview Roadmap
+
+Goal: Master the most important DSA patterns by solving 101 curated problems in a structured order.
+
+Progress: 0 / 101
+Status: 🟡 Not Started
+Recommended flow: Learn Pattern → Solve Easy → Solve Medium → Review → Repeat
+
+🗺️ Roadmap
+#	Topic	Problems	Progress
+01	📦 Arrays	16	⬜ 0/16
+02	🔤 Strings & Hashing	13	⬜ 0/13
+03	🪟 Two Pointers & Sliding Window	7	⬜ 0/7
+04	🔎 Binary Search	8	⬜ 0/8
+05	🔗 Linked List	10	⬜ 0/10
+06	📚 Stack & Queue	8	⬜ 0/8
+07	🌳 Trees	16	⬜ 0/16
+08	⚡ Heap / Priority Queue	5	⬜ 0/5
+09	🧮 Matrix	3	⬜ 0/3
+10	🕸️ Graphs — BFS/DFS	6	⬜ 0/6
+11	🔄 Recursion & Backtracking	6	⬜ 0/6
+12	📏 Intervals	3	⬜ 0/3
+
+Total → 101 Problems
+
+01 · 📦 Arrays
+
+Focus: Array traversal, frequency counting, prefix sums, in-place manipulation, subarrays.
+
+Problems
+ 01 — Two Sum
+ 02 — Contains Duplicate
+ 03 — Best Time to Buy and Sell Stock
+ 04 — Best Time to Buy and Sell Stock II
+ 05 — Maximum Subarray
+ 06 — Product of Array Except Self
+ 07 — Move Zeroes
+ 08 — Majority Element
+ 09 — Missing Number
+ 10 — Single Number
+ 11 — Plus One
+ 12 — Merge Sorted Array
+ 13 — Rotate Array
+ 14 — Sort Colors
+ 15 — Squares of a Sorted Array
+ 16 — Subarray Sum Equals K
+
+Pattern checklist
+
+Hash Map · Prefix Sum · Kadane's Algorithm · In-place Array · Frequency
+
+02 · 🔤 Strings & Hashing
+
+Focus: Character frequency, hash maps, string manipulation, palindromes.
+
+ 17 — Valid Anagram
+ 18 — Group Anagrams
+ 19 — Valid Palindrome
+ 20 — Longest Common Prefix
+ 21 — Ransom Note
+ 22 — First Unique Character in a String
+ 23 — Isomorphic Strings
+ 24 — Roman to Integer
+ 25 — Reverse Words in a String
+ 26 — Find All Anagrams in a String
+ 27 — Longest Palindromic Substring
+ 28 — Valid Sudoku
+ 29 — Longest Consecutive Sequence
+
+Pattern checklist
+
+Hash Map · Frequency Map · Sliding Window · Palindrome · Set
+
+03 · 🪟 Two Pointers & Sliding Window
+
+Focus: Reduce nested loops using two moving pointers or a dynamic window.
+
+ 30 — Two Sum II – Input Array Is Sorted
+ 31 — Remove Duplicates from Sorted Array
+ 32 — Container With Most Water
+ 33 — 3Sum
+ 34 — Longest Substring Without Repeating Characters
+ 35 — Longest Repeating Character Replacement
+ 36 — Minimum Size Subarray Sum
+
+Pattern checklist
+
+Two Pointers · Sliding Window · Left/Right Pointer · Frequency
+
+04 · 🔎 Binary Search
+
+Focus: Search efficiently in sorted or partially sorted data.
+
+ 37 — Binary Search
+ 38 — Search Insert Position
+ 39 — First Bad Version
+ 40 — Sqrt(x)
+ 41 — Search a 2D Matrix
+ 42 — Search in Rotated Sorted Array
+ 43 — Find Minimum in Rotated Sorted Array
+ 44 — Find First and Last Position of Element in Sorted Array
+
+Pattern checklist
+
+Binary Search · Search Space · Sorted Array · Rotated Array
+
+05 · 🔗 Linked List
+
+Focus: Pointer manipulation, fast/slow pointers, reversing and merging.
+
+ 45 — Reverse Linked List
+ 46 — Merge Two Sorted Lists
+ 47 — Linked List Cycle
+ 48 — Middle of the Linked List
+ 49 — Remove Linked List Elements
+ 50 — Remove Nth Node From End of List
+ 51 — Palindrome Linked List
+ 52 — Intersection of Two Linked Lists
+ 53 — Add Two Numbers
+ 54 — Reorder List
+
+Pattern checklist
+
+Fast & Slow · Reverse · Dummy Node · Two Pointers
+
+06 · 📚 Stack & Queue
+
+Focus: LIFO/FIFO thinking, monotonic stacks and expression evaluation.
+
+ 55 — Valid Parentheses
+ 56 — Min Stack
+ 57 — Implement Queue using Stacks
+ 58 — Implement Stack using Queues
+ 59 — Backspace String Compare
+ 60 — Evaluate Reverse Polish Notation
+ 61 — Daily Temperatures
+ 62 — Decode String
+
+Pattern checklist
+
+Stack · Queue · Monotonic Stack · LIFO/FIFO
+
+07 · 🌳 Trees
+
+Focus: Recursion, DFS, BFS, BST properties and tree traversal.
+
+ 63 — Maximum Depth of Binary Tree
+ 64 — Invert Binary Tree
+ 65 — Same Tree
+ 66 — Symmetric Tree
+ 67 — Subtree of Another Tree
+ 68 — Binary Tree Inorder Traversal
+ 69 — Binary Tree Level Order Traversal
+ 70 — Binary Tree Right Side View
+ 71 — Path Sum
+ 72 — Diameter of Binary Tree
+ 73 — Balanced Binary Tree
+ 74 — Convert Sorted Array to Binary Search Tree
+ 75 — Validate Binary Search Tree
+ 76 — Kth Smallest Element in a BST
+ 77 — Lowest Common Ancestor of a BST
+ 78 — Lowest Common Ancestor of a Binary Tree
+
+Pattern checklist
+
+DFS · BFS · Recursion · BST · Tree Traversal
+
+08 · ⚡ Heap / Priority Queue
+ 79 — Last Stone Weight
+ 80 — Kth Largest Element in a Stream
+ 81 — Kth Largest Element in an Array
+ 82 — Top K Frequent Elements
+ 83 — K Closest Points to Origin
+
+Pattern checklist
+
+Min Heap · Max Heap · Top K · Priority Queue
+
+09 · 🧮 Matrix
+ 84 — Set Matrix Zeroes
+ 85 — Spiral Matrix
+ 86 — Rotate Image
+
+Pattern checklist
+
+2D Array · Traversal · In-place Manipulation
+
+10 · 🕸️ Graph Basics — BFS / DFS
+
+Focus: Graph traversal, connected components, grids and shortest-path basics.
+
+ 87 — Flood Fill
+ 88 — Number of Islands
+ 89 — Max Area of Island
+ 90 — Number of Provinces
+ 91 — Rotting Oranges
+ 92 — Clone Graph
+
+Pattern checklist
+
+BFS · DFS · Visited Set · Grid Traversal · Connected Components
+
+11 · 🔄 Recursion & Backtracking
+
+Focus: Explore all possible combinations, choices and paths.
+
+ 93 — Subsets
+ 94 — Permutations
+ 95 — Combination Sum
+ 96 — Generate Parentheses
+ 97 — Letter Combinations of a Phone Number
+ 98 — Word Search
+
+Pattern checklist
+
+Recursion · Backtracking · Decision Tree · DFS
+
+12 · 📏 Intervals
+ 99 — Merge Intervals
+ 100 — Insert Interval
+ 101 — Non-overlapping Intervals
+
+Pattern checklist
+
+Sorting · Interval Merging · Greedy
+
+🧭 Recommended Learning Order
+Phase 1 — Core Patterns
+
+Arrays → Strings & Hashing → Two Pointers / Sliding Window
+
+Phase 2 — Search & Pointers
+
+Binary Search → Linked List → Stack / Queue
+
+Phase 3 — Advanced Data Structures
+
+Trees → Heap / Priority Queue → Matrix
+
+Phase 4 — Problem Solving
+
+Graphs → Backtracking → Intervals
+
+🎯 The 101-Problem Journey
+📦 Arrays
+   ↓
+🔤 Strings & Hashing
+   ↓
+🪟 Two Pointers / Sliding Window
+   ↓
+🔎 Binary Search
+   ↓
+🔗 Linked List
+   ↓
+📚 Stack / Queue
+   ↓
+🌳 Trees
+   ↓
+⚡ Heap
+   ↓
+🧮 Matrix
+   ↓
+🕸️ Graphs
+   ↓
+🔄 Backtracking
+   ↓
+📏 Intervals
+✅ Completion Levels
+
+🟢 Beginner
+1–30 problems
+
+🟡 Building Patterns
+31–60 problems
+
+🟠 Interview Practice
+61–85 problems
+
+🔴 101 Complete
+86–101 problems
+
+💡 How to solve each problem
+
+For every problem, track these 5 things:
+
+Step	Ask yourself
+1️⃣ Understand	What exactly is being asked?
+2️⃣ Pattern	Which DSA pattern does this use?
+3️⃣ Approach	Can I explain the solution before coding?
+4️⃣ Code	Implement without copying
+5️⃣ Review	What did I learn / forget?
+
+Don't just count solved problems. The goal is to recognize the pattern behind the problem.

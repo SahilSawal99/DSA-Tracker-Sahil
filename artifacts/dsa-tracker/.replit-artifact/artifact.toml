@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "DSA Roadmap Tracker"
+description = "A responsive personal study dashboard for a curated 101-problem data structures and algorithms roadmap, with persistent progress tracking, theme options, topic guides, and direct LeetCode links."
+version = "1.0.0"
+id = "artifacts/dsa-tracker"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20149
+
+[services.development]
+run = "pnpm --filter @workspace/dsa-tracker run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/dsa-tracker", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/dsa-tracker/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20149"
+BASE_PATH = "/"

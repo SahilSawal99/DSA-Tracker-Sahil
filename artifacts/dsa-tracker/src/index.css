@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --font-sans: var(--app-font-sans);
+  --font-mono: var(--app-font-mono);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  color-scheme: light;
+  --background: 43 40% 96%;
+  --foreground: 225 26% 16%;
+  --card: 43 40% 99%;
+  --card-foreground: 225 26% 16%;
+  --popover: 43 40% 99%;
+  --popover-foreground: 225 26% 16%;
+  --primary: 160 54% 35%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 43 27% 91%;
+  --secondary-foreground: 225 23% 25%;
+  --muted: 42 24% 91%;
+  --muted-foreground: 220 12% 46%;
+  --accent: 19 88% 59%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 68% 52%;
+  --border: 40 20% 85%;
+  --input: 40 20% 82%;
+  --ring: 160 54% 35%;
+  --app-font-sans: 'Manrope', sans-serif;
+  --app-font-display: 'Space Grotesk', sans-serif;
+  --app-font-mono: 'DM Mono', monospace;
+  --radius: 1rem;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: 224 24% 11%;
+  --foreground: 42 25% 92%;
+  --card: 224 21% 15%;
+  --card-foreground: 42 25% 92%;
+  --popover: 224 21% 15%;
+  --popover-foreground: 42 25% 92%;
+  --primary: 157 55% 56%;
+  --primary-foreground: 224 24% 11%;
+  --secondary: 224 16% 21%;
+  --secondary-foreground: 42 25% 92%;
+  --muted: 224 16% 21%;
+  --muted-foreground: 220 12% 66%;
+  --accent: 19 88% 64%;
+  --accent-foreground: 224 24% 11%;
+  --destructive: 0 67% 61%;
+  --border: 224 15% 26%;
+  --input: 224 15% 30%;
+  --ring: 157 55% 56%;
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; margin: 0; font-family: var(--app-font-sans); }
+  button, input, textarea, select { font: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 3px solid hsl(var(--primary) / .45); outline-offset: 3px; }
+}
+
+* { box-sizing: border-box; }
+.app-shell { min-height: 100dvh; background: hsl(var(--background)); }
+.grain::after { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 30; opacity: .025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E"); }
+.font-display { font-family: var(--app-font-display); }
+.font-mono { font-family: var(--app-font-mono); }
+.page-enter { animation: rise-in .45s cubic-bezier(.2,.8,.2,1) both; }
+.stagger-1 { animation-delay: .06s; }
+.stagger-2 { animation-delay: .12s; }
+.stagger-3 { animation-delay: .18s; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.status-pill { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; border-radius: 999px; padding: 5px 9px; font-size: 11px; font-weight: 800; letter-spacing: .02em; }
+.status-not-started { color: hsl(var(--muted-foreground)); background: hsl(var(--muted)); }
+.status-in-progress { color: #9a5c04; background: #fff0ce; }
+.dark .status-in-progress { color: #ffd17a; background: #493517; }
+.status-solved { color: #13754f; background: #d9f4e8; }
+.dark .status-solved { color: #83e2b5; background: #173f31; }
+.status-review { color: #a84e28; background: #ffdfd1; }
+.dark .status-review { color: #ffad89; background: #4b2a20; }
+.progress-track { height: 7px; overflow: hidden; border-radius: 999px; background: hsl(var(--muted)); }
+.progress-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, #2ea97e, #92cf80); transition: width .5s cubic-bezier(.2,.8,.2,1); }
+.phase-mint { color: #275b47; background: #e0f1e6; }
+.phase-orange { color: #79502b; background: #fbebd9; }
+.phase-blue { color: #315669; background: #e0edf0; }
+.phase-plum { color: #694b60; background: #f0e6ed; }
+.dark .phase-mint { color: #c6ead4; background: #294338; }
+.dark .phase-orange { color: #f2d0a6; background: #493a2a; }
+.dark .phase-blue { color: #c0dce5; background: #2d424a; }
+.dark .phase-plum { color: #e2c9d9; background: #463747; }
+.problem-row { transition: background-color .18s ease, transform .18s ease, border-color .18s ease; }
+.problem-row:hover { transform: translateX(3px); }
+.check-pop { animation: check-pop .35s ease-out; }
+@keyframes check-pop { 50% { transform: scale(1.16); } }
+.scrollbar-thin { scrollbar-width: thin; scrollbar-color: hsl(var(--border)) transparent; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
